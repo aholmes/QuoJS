@@ -67,7 +67,7 @@ do ($$ = Quo) ->
                 CURRENT_TOUCH = _fingersPosition(touches, fingers)
                 is_swipe = _isSwipe(event)
                 if is_swipe then GESTURE.prevSwipe = true
-                if (is_swipe or GESTURE.prevSwipe is true) then
+                if (is_swipe or GESTURE.prevSwipe is true)
                     swipe_direction = _swipeDirection(FIRST_TOUCH[0].x, CURRENT_TOUCH[0].x, FIRST_TOUCH[0].y, CURRENT_TOUCH[0].y)
                     _trigger "swiping"
                     _trigger "swiping" + swipe_direction
