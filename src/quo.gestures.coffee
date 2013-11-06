@@ -9,7 +9,8 @@ do ($$ = Quo) ->
     HOLD_DELAY = 650
     GESTURES = ["touch",
                 "tap", "singleTap", "doubleTap", "hold",
-                "swipe", "swiping", "swipeLeft", "swipeRight", "swipeUp", "swipeDown",
+                "swipe", "swiping", "swipingLeft", "swipingRight",
+                "swipeLeft", "swipeRight", "swipeUp", "swipeDown",
                 "rotate", "rotating", "rotateLeft", "rotateRight",
                 "pinch", "pinching", "pinchIn", "pinchOut",
                 "drag", "dragLeft", "dragRight", "dragUp", "dragDown"]
@@ -66,7 +67,10 @@ do ($$ = Quo) ->
                 CURRENT_TOUCH = _fingersPosition(touches, fingers)
                 is_swipe = _isSwipe(event)
                 if is_swipe then GESTURE.prevSwipe = true
-                _trigger "swiping" if (is_swipe or GESTURE.prevSwipe is true)
+                if (is_swipe or GESTURE.prevSwipe is true) then
+                    swipe_direction = _swipeDirection(FIRST_TOUCH[0].x, CURRENT_TOUCH[0].x, FIRST_TOUCH[0].y, CURRENT_TOUCH[0].y)
+                    _trigger "swiping"
+                    _trigger "swiping" + swipe_direction
                 if fingers == 2
                     _captureRotation()
                     _capturePinch()
