@@ -70,7 +70,6 @@ do ($$ = Quo) ->
                 if fingers == 2
                     _captureRotation()
                     _capturePinch()
-                    event.preventDefault()
             else
                 _cleanGesture()
         true
