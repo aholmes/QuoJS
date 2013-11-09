@@ -29,7 +29,8 @@ do ($$ = Quo) ->
         environment.bind "touchend", _onTouchEnd
         environment.bind "touchcancel", _cleanGesture
 
-    $$(document).ready -> _listenTouches()
+    if typeof $$(document).ready is "function"
+        $$(document).ready -> _listenTouches()
 
     _onTouchStart = (event) ->
         EVENT = event

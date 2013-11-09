@@ -5,7 +5,8 @@ Quo = do ->
         unless selector
             Q()
         else if $$.toType(selector) is "function"
-            $$(document).ready selector
+            if typeof $$(document).ready is "function"
+                $$(document).ready selector
         else
             dom = $$.getDOMObject(selector, children)
             Q(dom, selector)
