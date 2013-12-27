@@ -65,7 +65,7 @@ do ($$ = Quo) ->
                 values.push value  if value?
         _flatten values
 
-    $$.each = (elements, callback) ->
+    $$.fn.each = $$.each = (elements, callback) ->
         i = undefined
         key = undefined
         if $$.toType(elements) is "array"
